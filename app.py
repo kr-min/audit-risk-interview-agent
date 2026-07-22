@@ -2653,7 +2653,7 @@ tbody td {
 # Gradio 앱
 # =========================================================
 with gr.Blocks(
-    title="Audit Red Flag Interview Agent",
+    title="감사 위험분석 및 인터뷰 지원 Agent",
     css=CSS,
 ) as demo:
 
