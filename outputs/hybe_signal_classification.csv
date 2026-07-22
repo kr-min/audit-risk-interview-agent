@@ -1,0 +1,6 @@
+﻿flag_id,title,rule_triggered,signal_classification,review_action
+RF-001,외형 성장과 수익성 악화의 괴리,True,Red Flag,우선 추가 검토
+RF-002,이익과 영업현금흐름 방향의 불일치,True,Red Flag,우선 추가 검토
+RF-003,높은 영업권 비중과 수익성 악화의 결합,True,Red Flag,우선 추가 검토
+RF-004,매출 성장과 매출채권 증가의 관계,False,Monitoring Signal,정기 추세 모니터링
+RF-005,매출 성장과 재고자산 증가의 관계,False,Monitoring Signal,정기 추세 모니터링

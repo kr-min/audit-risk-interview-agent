@@ -1,0 +1,36 @@
+{
+  "project_name": "HYBE Audit Red Flag & Interview Agent",
+  "project_type": "Rule-based audit risk assessment MVP",
+  "target_company": "HYBE",
+  "financial_statement_scope": "Consolidated",
+  "analysis_period": [
+    2023,
+    2024,
+    2025
+  ],
+  "currency_unit": "KRW million",
+  "completed_account_count": 11,
+  "total_template_account_count": 19,
+  "rule_count": 10,
+  "triggered_red_flag_count": 8,
+  "monitoring_signal_count": 2,
+  "external_validation": {
+    "case_count": 1,
+    "element_capture_score": 7,
+    "element_total": 8,
+    "element_capture_rate_pct": 87.5,
+    "industry_specific_rule_captured": false
+  },
+  "calculation_engine": "Python and pandas",
+  "generative_ai_status": "Not connected in current MVP",
+  "hypothesis_status": "Analyst-designed prototype hypotheses",
+  "limitations": [
+    "일부 입력 수치는 공식 원문 최종 재대조 필요",
+    "원장 및 거래 단위 데이터 미반영",
+    "사업부문별 손익 자료 미반영",
+    "외부 검증 사례는 1건뿐임",
+    "업종 특화 규칙은 별도 모듈화 필요",
+    "생성형 AI API 미연결"
+  ],
+  "disclaimer": "식별된 Red Flag는 오류나 부정의 존재를 의미하는 것이 아니라, 기업 및 환경에 대한 이해와 중요왜곡표시위험 평가를 위해 추가적인 질문과 검토가 필요한 영역을 의미한다."
+}

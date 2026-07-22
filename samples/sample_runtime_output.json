@@ -1,0 +1,14 @@
+{
+  "flag_id": "RF-001",
+  "title": "외형 성장과 수익성 악화의 괴리",
+  "confirmed_facts": {
+    "2025_revenue_growth_pct": 17.5,
+    "2024_operating_margin_pct": 8.2,
+    "2025_operating_margin_pct": 1.9,
+    "margin_change_ppt": -6.3
+  },
+  "rule": "매출이 증가했지만 영업이익률이 전년 대비 3%p 이상 하락",
+  "rule_triggered": true,
+  "status": "추가 검토 필요",
+  "disclaimer": "식별된 Red Flag는 오류나 부정의 존재를 의미하는 것이 아니라, 기업 및 환경에 대한 이해와 중요왜곡표시위험 평가를 위해 추가적인 질문과 검토가 필요한 영역을 의미한다."
+}

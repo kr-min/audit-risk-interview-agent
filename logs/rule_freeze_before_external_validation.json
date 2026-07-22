@@ -1,0 +1,78 @@
+{
+  "freeze_datetime": "2026-07-22T14:52:08.990650",
+  "rule_count": 10,
+  "sha256": "634a8f194534627165e1bb2ce45867b670de5c0b97b3436e76d75c6c75bfe095",
+  "purpose": "외부 사례 확인 후 규칙을 사후적으로 변경했다는 오해를 방지하기 위한 MVP 규칙 동결 기록",
+  "rules": [
+    {
+      "flag_id": "RF-001",
+      "title": "외형 성장과 수익성 악화의 괴리",
+      "risk_family": "수익성 및 비용구조",
+      "rule": "매출이 증가했지만 영업이익률이 전년 대비 3%p 이상 하락",
+      "rule_triggered_for_hybe": true
+    },
+    {
+      "flag_id": "RF-002",
+      "title": "이익과 영업현금흐름 방향의 불일치",
+      "risk_family": "손익 및 현금흐름",
+      "rule": "영업이익률이 전년 대비 3%p 이상 하락했지만 영업현금흐름이 전년 대비 증가한 경우",
+      "rule_triggered_for_hybe": true
+    },
+    {
+      "flag_id": "RF-003",
+      "title": "높은 영업권 비중과 수익성 악화의 결합",
+      "risk_family": "자산 손상 및 평가",
+      "rule": "영업권이 총자산의 20% 이상이고, 영업이익률이 전년 대비 3%p 이상 하락한 경우",
+      "rule_triggered_for_hybe": true
+    },
+    {
+      "flag_id": "RF-004",
+      "title": "매출 성장과 매출채권 증가의 관계",
+      "risk_family": "매출 및 채권",
+      "rule": "매출채권 증가율이 매출 증가율보다 5%p 이상 높은 경우",
+      "rule_triggered_for_hybe": false
+    },
+    {
+      "flag_id": "RF-005",
+      "title": "매출 성장과 재고자산 증가의 관계",
+      "risk_family": "재고 및 원가",
+      "rule": "재고자산 증가율이 매출 증가율보다 5%p 이상 높은 경우",
+      "rule_triggered_for_hybe": false
+    },
+    {
+      "flag_id": "RF-006",
+      "title": "영업이익 흑자와 대규모 순손실의 괴리",
+      "risk_family": "순손익 및 비영업손익",
+      "rule": "영업이익이 양수이나 순이익이 음수이고, 영업이익과 순이익의 차이가 매출액의 5% 이상인 경우",
+      "rule_triggered_for_hybe": true
+    },
+    {
+      "flag_id": "RF-007",
+      "title": "관계기업투자 급감과 순손실의 결합",
+      "risk_family": "투자자산 및 지분법",
+      "rule": "공동기업 및 관계기업투자가 전년 대비 30% 이상 감소하고 동시에 순손실이 발생한 경우",
+      "rule_triggered_for_hybe": true
+    },
+    {
+      "flag_id": "RF-008",
+      "title": "2년 연속 영업이익률 하락",
+      "risk_family": "수익성 및 비용구조",
+      "rule": "영업이익률이 2개 연도 연속 하락하고, 2년 누적 하락폭이 5%p 이상인 경우",
+      "rule_triggered_for_hybe": true
+    },
+    {
+      "flag_id": "RF-009",
+      "title": "매출 성장에도 2년 연속 순손실",
+      "risk_family": "순손익 및 비영업손익",
+      "rule": "2023년 대비 2025년 매출이 증가했으나 2024년과 2025년에 연속 순손실이 발생한 경우",
+      "rule_triggered_for_hybe": true
+    },
+    {
+      "flag_id": "RF-010",
+      "title": "자산회전율 개선과 음(-)의 자산수익률",
+      "risk_family": "자산효율성 및 평가",
+      "rule": "총자산회전율은 전년 대비 개선됐지만 총자산이익률이 음수이고 전년보다 악화된 경우",
+      "rule_triggered_for_hybe": true
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+﻿source_id,source_name,source_type,years,statement_scope,use,verification_status,period,usage,note
+SRC-001,HYBE 공식 재무정보,공식 IR 요약재무정보,2023-2025,연결,기본 재무수치 1차 확인,사업보고서와 대조 필요,,,
+SRC-002,HYBE 2025 사업보고서,DART 공식 공시,2025 및 비교표시 2024,연결,"감사인, 재무제표, 주석, 핵심 계정 최종 확인",확인 예정,,,
+SRC-003,공식 DART 제출 공시 내 건설계약 관련 회계오류 사례,공식 공시,,사례별 공시,,공식 공시 확인,외부 검증 사례,기존 10개 규칙의 블라인드 구조 검증,회사명은 결과 보고서에서 익명화. 오류금액은 HYBE 분석에 사용하지 않음.

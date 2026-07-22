@@ -1,0 +1,60 @@
+{
+  "case": {
+    "case_id": "EXT-001",
+    "case_name_blinded": "국내 건설계약 관련 회계오류 사례",
+    "source_type": "공식 DART 제출 공시 내 회계오류 관련 기재",
+    "source_status": "공식 공시 확인",
+    "industry": "건설 및 프로젝트 계약",
+    "known_error_accounts": [
+      "매출채권",
+      "재고자산",
+      "법인세자산"
+    ],
+    "known_error_patterns": [
+      "매출채권 과대계상",
+      "재고자산 과소계상",
+      "건설계약 관련 자산의 분류 또는 측정 오류"
+    ],
+    "disclosed_amounts_krw_million": {
+      "accounts_receivable_overstatement": 460001,
+      "inventory_understatement": 439426,
+      "tax_asset_understatement": 5908
+    },
+    "validation_scope": "회사명과 실제 지적 결론을 규칙 설계에 사용하지 않고, 기존 10개 규칙이 관련 위험 계정과 후속 질문을 사전에 포함했는지 평가",
+    "important_limitations": [
+      "하이브와 검증 사례의 업종 및 거래구조가 다름",
+      "현재 엔진은 건설계약 진행률을 직접 분석하지 않음",
+      "외부 사례의 오류금액을 하이브 위험평가에 사용하지 않음",
+      "한 사례만으로 모델의 일반적 정확도를 입증할 수 없음"
+    ]
+  },
+  "rule_freeze_sha256": "634a8f194534627165e1bb2ce45867b670de5c0b97b3436e76d75c6c75bfe095",
+  "rule_count_before_validation": 10,
+  "matched_rule_count": 10,
+  "captured_elements": [
+    "accounts_receivable_account",
+    "inventory_account",
+    "cutoff_or_occurrence_assertion",
+    "valuation_assertion",
+    "receivable_interview_question",
+    "inventory_interview_question",
+    "supporting_evidence_request"
+  ],
+  "missed_elements": [
+    "construction_contract_specific_rule"
+  ],
+  "capture_score": 7,
+  "total_elements": 8,
+  "capture_rate_pct": 87.5,
+  "conclusion": "기존 모델은 매출채권과 재고자산 관련 계정, 주장, 인터뷰 질문 및 증빙 요청은 포착했으나, 건설계약 진행률과 미청구공사 등 업종 특화 위험은 포착하지 못함",
+  "roadmap": [
+    "업종별 규칙 모듈을 기본 재무비율 규칙과 분리",
+    "건설업 모듈에 진행률, 계약자산, 미청구공사 규칙 추가",
+    "외부 사례 수를 확대해 사례별 포착률과 오탐률 비교",
+    "규칙 변경 전후 버전과 검증 결과를 별도 보존"
+  ],
+  "metric_name": "validation_element_capture_rate",
+  "metric_definition": "외부 사례에서 사전에 정의한 검증 요소 중 기존 규칙·질문·증빙 구조가 포함한 요소의 비율",
+  "not_accuracy_metric": true,
+  "interpretation_guardrail": "본 지표는 회계오류 탐지 정확도, 재현율, 정밀도 또는 부정 발생확률을 의미하지 않음"
+}

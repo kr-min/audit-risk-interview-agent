@@ -1,0 +1,6 @@
+﻿account,account_kr,unit,2023,2024,2025,statement_scope,source_document,source_page_or_note,verification_status,input_note
+Intangible_Assets,무형자산,KRW_million,,,,연결,,,미검증,2025년 사업보고서 연결재무제표와 주석에서 3개년 수치 입력
+Goodwill,영업권,KRW_million,,,,연결,,,미검증,2025년 사업보고서 연결재무제표와 주석에서 3개년 수치 입력
+Investment_in_Associates,관계기업 및 공동기업 투자,KRW_million,,,,연결,,,미검증,2025년 사업보고서 연결재무제표와 주석에서 3개년 수치 입력
+Total_Assets,자산총계,KRW_million,5345680.0,5479190.0,5485470.0,연결,,,"기존 입력값, 공식 원문 재대조 필요",
+Operating_Profit,영업이익,KRW_million,295636.0,184000.0,49300.0,연결,,,"기존 입력값, 공식 원문 재대조 필요",

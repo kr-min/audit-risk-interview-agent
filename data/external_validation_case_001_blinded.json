@@ -1,0 +1,29 @@
+{
+  "case_id": "EXT-001",
+  "case_name_blinded": "국내 건설계약 관련 회계오류 사례",
+  "source_type": "공식 DART 제출 공시 내 회계오류 관련 기재",
+  "source_status": "공식 공시 확인",
+  "industry": "건설 및 프로젝트 계약",
+  "known_error_accounts": [
+    "매출채권",
+    "재고자산",
+    "법인세자산"
+  ],
+  "known_error_patterns": [
+    "매출채권 과대계상",
+    "재고자산 과소계상",
+    "건설계약 관련 자산의 분류 또는 측정 오류"
+  ],
+  "disclosed_amounts_krw_million": {
+    "accounts_receivable_overstatement": 460001,
+    "inventory_understatement": 439426,
+    "tax_asset_understatement": 5908
+  },
+  "validation_scope": "회사명과 실제 지적 결론을 규칙 설계에 사용하지 않고, 기존 10개 규칙이 관련 위험 계정과 후속 질문을 사전에 포함했는지 평가",
+  "important_limitations": [
+    "하이브와 검증 사례의 업종 및 거래구조가 다름",
+    "현재 엔진은 건설계약 진행률을 직접 분석하지 않음",
+    "외부 사례의 오류금액을 하이브 위험평가에 사용하지 않음",
+    "한 사례만으로 모델의 일반적 정확도를 입증할 수 없음"
+  ]
+}

@@ -1,0 +1,20 @@
+﻿company,statement_type,account,account_kr,category,unit,2023,2024,2025,source_note
+HYBE,consolidated,Revenue,매출액,income_statement,KRW_million,2178145.0,2255639.0,2649890.0,"HYBE 공식 재무정보, 연결 기준, 사업보고서와 추후 대조 예정"
+HYBE,consolidated,Cost_of_Sales,매출원가,income_statement,KRW_million,,,,
+HYBE,consolidated,Gross_Profit,매출총이익,income_statement,KRW_million,,,,
+HYBE,consolidated,Operating_Profit,영업이익,income_statement,KRW_million,295636.0,184000.0,49300.0,
+HYBE,consolidated,Net_Income,당기순이익,income_statement,KRW_million,183424.0,-3400.0,-254400.0,
+HYBE,consolidated,Accounts_Receivable,매출채권,balance_sheet,KRW_million,214977.0,262261.0,283558.0,"HYBE 2025 연결감사보고서, 연결재무상태표 및 매출채권 관련 주석, 매출채권 순액, 공식 원문 대조 완료, 매출채권 총액에서 손실충당금을 차감한 순장부금액, 백만원 단위"
+HYBE,consolidated,Inventory,재고자산,balance_sheet,KRW_million,125860.0,163152.0,184400.0,"HYBE 2025 연결감사보고서, 연결재무상태표 및 재고자산 관련 주석, 공식 원문 대조 완료, 연결 기준 재고자산 기말 장부금액, 백만원 단위"
+HYBE,consolidated,Trade_Payables,매입채무,balance_sheet,KRW_million,26000.0,33000.0,56000.0,"HYBE 2025 연결감사보고서, 연결재무상태표 및 매입채무 관련 주석, 공식 원문 대조 완료, 매입채무2023년은 2차 재무데이터 기반 잠정값, 2024년과 2025년은 회사자료 기반 증권사 표와 대조, 공식 주석 원문 최종 확인 필요만 분리한 연결 기준 기말금액, 억원 단위 공시를 백만원으로 환산한 잠정값"
+HYBE,consolidated,Cash_and_Cash_Equivalents,현금및현금성자산,balance_sheet,KRW_million,,,,
+HYBE,consolidated,Property_Plant_Equipment,유형자산,balance_sheet,KRW_million,,,,
+HYBE,consolidated,Intangible_Assets,무형자산,balance_sheet,KRW_million,2165250.0,2244257.0,1986686.0,"HYBE 2025 연결감사보고서, 연결재무상태표 및 주석 12 무형자산, 공식 원문 대조 완료"
+HYBE,consolidated,Goodwill,영업권,balance_sheet,KRW_million,1717432.0,1809809.0,1679490.0,"HYBE 2025 연결감사보고서, 주석 12 무형자산, 영업권 손상평가, 공식 원문 대조 완료"
+HYBE,consolidated,Borrowings,차입금,balance_sheet,KRW_million,,,,
+HYBE,consolidated,Interest_Expense,이자비용,income_statement,KRW_million,,,,
+HYBE,consolidated,Operating_Cash_Flow,영업활동현금흐름,cash_flow,KRW_million,310627.0,151599.0,177260.0,"HYBE 연결현금흐름표 및 공식 재무정보 기준, 백만원 단위, 사업보고서 원문과 최종 대조 예정"
+HYBE,consolidated,Capital_Expenditure,유형자산 취득 현금유출,cash_flow,KRW_million,,,,
+HYBE,consolidated,Investment_in_Associates,관계기업 및 공동기업 투자,balance_sheet,KRW_million,241080.0,216075.0,101756.0,"HYBE 2025 연결감사보고서, 연결재무상태표 및 주석 10 공동기업 및 관계기업 투자, 공식 원문 대조 완료"
+HYBE,consolidated,Total_Assets,자산총계,balance_sheet,KRW_million,5345680.0,5479190.0,5485470.0,
+HYBE,consolidated,Total_Liabilities,부채총계,balance_sheet,KRW_million,,,,

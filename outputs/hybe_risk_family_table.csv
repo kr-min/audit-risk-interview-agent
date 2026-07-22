@@ -1,0 +1,11 @@
+﻿flag_id,title,risk_family,triggered,classification,priority_score
+RF-008,2년 연속 영업이익률 하락,수익성 및 비용구조,True,Red Flag,13
+RF-009,매출 성장에도 2년 연속 순손실,순손익 및 비영업손익,True,Red Flag,13
+RF-001,외형 성장과 수익성 악화의 괴리,수익성 및 비용구조,True,Red Flag,12
+RF-002,이익과 영업현금흐름 방향의 불일치,손익 및 현금흐름,True,Red Flag,12
+RF-006,영업이익 흑자와 대규모 순손실의 괴리,순손익 및 비영업손익,True,Red Flag,12
+RF-007,관계기업투자 급감과 순손실의 결합,투자자산 및 지분법,True,Red Flag,12
+RF-010,자산회전율 개선과 음(-)의 자산수익률,자산효율성 및 평가,True,Red Flag,12
+RF-003,높은 영업권 비중과 수익성 악화의 결합,자산 손상 및 평가,True,Red Flag,11
+RF-004,매출 성장과 매출채권 증가의 관계,매출 및 채권,False,Monitoring Signal,7
+RF-005,매출 성장과 재고자산 증가의 관계,재고 및 원가,False,Monitoring Signal,7

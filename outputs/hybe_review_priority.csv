@@ -1,0 +1,8 @@
+﻿검토순위,flag_id,title,triggered,classification,priority_score,priority
+1,RF-001,외형 성장과 수익성 악화의 괴리,True,Red Flag,12,높음
+2,RF-002,이익과 영업현금흐름 방향의 불일치,True,Red Flag,12,높음
+3,RF-006,영업이익 흑자와 대규모 순손실의 괴리,True,Red Flag,12,높음
+4,RF-007,관계기업투자 급감과 순손실의 결합,True,Red Flag,12,높음
+5,RF-003,높은 영업권 비중과 수익성 악화의 결합,True,Red Flag,11,높음
+6,RF-004,매출 성장과 매출채권 증가의 관계,False,Monitoring Signal,7,중간
+7,RF-005,매출 성장과 재고자산 증가의 관계,False,Monitoring Signal,7,중간

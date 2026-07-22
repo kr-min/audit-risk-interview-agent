@@ -1,0 +1,4 @@
+﻿account,account_kr,unit,2023,2024,2025,statement_scope,source_document,source_page_or_note,verification_status,input_note
+Accounts_Receivable,매출채권,KRW_million,,,,연결,,,미검증,2025년 연결감사보고서 재무상태표 및 주석에서 2023~2025년 기말 장부금액을 백만원 단위로 입력
+Inventory,재고자산,KRW_million,,,,연결,,,미검증,2025년 연결감사보고서 재무상태표 및 주석에서 2023~2025년 기말 장부금액을 백만원 단위로 입력
+Trade_Payables,매입채무,KRW_million,,,,연결,,,미검증,2025년 연결감사보고서 재무상태표 및 주석에서 2023~2025년 기말 장부금액을 백만원 단위로 입력
