@@ -1,0 +1,19 @@
+{
+  "company": "하이브",
+  "slug": "hybe",
+  "corp_code": "01204056",
+  "verification_mode": "live_dart_validated",
+  "verification_status": "validated",
+  "years": [
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "account_count": 11,
+  "validated_at": "2026-07-22T21:15:14",
+  "files": {
+    "csv": "verified_demo/hybe/input/hybe_dart_pipeline_11_accounts.csv",
+    "json": "verified_demo/hybe/outputs/hybe_audit_analysis.json",
+    "markdown": "verified_demo/hybe/outputs/hybe_audit_report.md"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "project": "Audit Red Flag Interview Agent",
+  "release_type": "portfolio_verified_demo",
+  "created_at": "2026-07-22T21:15:14",
+  "companies": [
+    {
+      "company": "삼성전자",
+      "slug": "samsung_electronics",
+      "corp_code": "00126380",
+      "verification_mode": "live_dart_validated",
+      "verification_status": "validated",
+      "years": [
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "account_count": 11,
+      "validated_at": "2026-07-22T21:15:14",
+      "files": {
+        "csv": "verified_demo/samsung_electronics/input/samsung_electronics_dart_pipeline_11_accounts.csv",
+        "json": "verified_demo/samsung_electronics/outputs/samsung_electronics_audit_analysis.json",
+        "markdown": "verified_demo/samsung_electronics/outputs/samsung_electronics_audit_report.md"
+      }
+    },
+    {
+      "company": "NAVER",
+      "slug": "naver",
+      "corp_code": "00266961",
+      "verification_mode": "live_dart_validated",
+      "verification_status": "validated",
+      "years": [
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "account_count": 11,
+      "validated_at": "2026-07-22T21:15:14",
+      "files": {
+        "csv": "verified_demo/naver/input/naver_dart_pipeline_11_accounts.csv",
+        "json": "verified_demo/naver/outputs/naver_audit_analysis.json",
+        "markdown": "verified_demo/naver/outputs/naver_audit_report.md"
+      }
+    },
+    {
+      "company": "카카오",
+      "slug": "kakao",
+      "corp_code": "00258801",
+      "verification_mode": "verified_snapshot",
+      "verification_status": "validated",
+      "years": [
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "account_count": 11,
+      "validated_at": "2026-07-22T21:15:14",
+      "files": {
+        "csv": "verified_demo/kakao/input/kakao_dart_pipeline_11_accounts.csv",
+        "json": "verified_demo/kakao/outputs/kakao_audit_analysis.json",
+        "markdown": "verified_demo/kakao/outputs/kakao_audit_report.md"
+      }
+    },
+    {
+      "company": "하이브",
+      "slug": "hybe",
+      "corp_code": "01204056",
+      "verification_mode": "live_dart_validated",
+      "verification_status": "validated",
+      "years": [
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "account_count": 11,
+      "validated_at": "2026-07-22T21:15:14",
+      "files": {
+        "csv": "verified_demo/hybe/input/hybe_dart_pipeline_11_accounts.csv",
+        "json": "verified_demo/hybe/outputs/hybe_audit_analysis.json",
+        "markdown": "verified_demo/hybe/outputs/hybe_audit_report.md"
+      }
+    }
+  ]
+}

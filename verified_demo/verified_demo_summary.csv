@@ -1,0 +1,5 @@
+﻿기업,CSV,JSON,보고서,메타데이터,최종,검증방식
+삼성전자,PASS,PASS,PASS,PASS,PASS,live_dart_validated
+NAVER,PASS,PASS,PASS,PASS,PASS,live_dart_validated
+카카오,PASS,PASS,PASS,PASS,PASS,verified_snapshot
+하이브,PASS,PASS,PASS,PASS,PASS,live_dart_validated

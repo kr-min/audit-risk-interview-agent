@@ -93,7 +93,10 @@ ACCOUNT_RULES = {
         "account_ids": [
             "ifrs-full_InvestmentsInAssociatesAndJointVentures",
             "ifrs-full_InvestmentsInAssociates",
-        ],
+        'ifrs-full_InvestmentAccountedForUsingEquityMethod',
+        '관계기업및공동기업 투자',
+        '관계기업및공동기업투자',
+],
         "account_names": [
             "관계기업 및 공동기업 투자",
             "관계기업투자",
@@ -167,7 +170,7 @@ def parse_args():
 
     parser.add_argument(
         "--project-root",
-        default="/content/audit_red_flag_agent",
+        default=str(Path(__file__).resolve().parents[1]),
         help="프로젝트 루트 경로",
     )
 
@@ -816,12 +819,12 @@ def main():
 
     output_csv = (
         samples_dir
-        / "hybe_dart_pipeline_11_accounts.csv"
+        / f"{args.company.lower().replace(' ', '_')}_dart_pipeline_11_accounts.csv"
     )
 
     agent_output_dir = (
         project_root
-        / "hybe_pipeline_outputs"
+        / f"{args.company.lower().replace(' ', '_')}_pipeline_outputs"
     )
 
     yearly_data = {}
@@ -869,6 +872,18 @@ def main():
         print(
             f"  접수번호: {receipt_no}"
         )
+
+        # 카카오 2025 사업보고서 XBRL 접수번호 예외처리
+        KAKAO_2025_VALID_RCEPT_NO = "20260318001423"
+        if (
+            str(args.company).replace(' ', '') == '카카오'
+            and str(year) == '2025'
+        ):
+            rcept_no = KAKAO_2025_VALID_RCEPT_NO
+            print(
+                '  카카오 2025 검증 접수번호 적용: '
+                + rcept_no
+            )
 
         download_xbrl_zip(
             args.api_key,

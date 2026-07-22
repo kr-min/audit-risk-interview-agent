@@ -1,0 +1,19 @@
+{
+  "company": "삼성전자",
+  "slug": "samsung_electronics",
+  "corp_code": "00126380",
+  "verification_mode": "live_dart_validated",
+  "verification_status": "validated",
+  "years": [
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "account_count": 11,
+  "validated_at": "2026-07-22T21:15:14",
+  "files": {
+    "csv": "verified_demo/samsung_electronics/input/samsung_electronics_dart_pipeline_11_accounts.csv",
+    "json": "verified_demo/samsung_electronics/outputs/samsung_electronics_audit_analysis.json",
+    "markdown": "verified_demo/samsung_electronics/outputs/samsung_electronics_audit_report.md"
+  }
+}

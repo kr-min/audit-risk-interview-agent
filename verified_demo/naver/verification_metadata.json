@@ -1,0 +1,19 @@
+{
+  "company": "NAVER",
+  "slug": "naver",
+  "corp_code": "00266961",
+  "verification_mode": "live_dart_validated",
+  "verification_status": "validated",
+  "years": [
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "account_count": 11,
+  "validated_at": "2026-07-22T21:15:14",
+  "files": {
+    "csv": "verified_demo/naver/input/naver_dart_pipeline_11_accounts.csv",
+    "json": "verified_demo/naver/outputs/naver_audit_analysis.json",
+    "markdown": "verified_demo/naver/outputs/naver_audit_report.md"
+  }
+}
