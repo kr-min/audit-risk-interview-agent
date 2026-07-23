@@ -870,6 +870,24 @@ def build_final_csv(
         raise RuntimeError(
             f"필수 계정 누락: {missing_accounts}"
         )
+    optional_zero_accounts = {
+        "Investment_in_Associates",
+    }
+
+    optional_account_mask = final_df["Account"].isin(
+        optional_zero_accounts
+    )
+
+    final_df.loc[
+        optional_account_mask
+    ] = final_df.loc[
+        optional_account_mask
+    ].fillna(0)
+
+    missing_value_count = int(
+        final_df.isna().sum().sum()
+    )
+
     if missing_value_count:
         missing_detail = final_df.isna().sum()
         missing_detail = missing_detail[
