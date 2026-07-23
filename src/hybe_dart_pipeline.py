@@ -90,6 +90,19 @@ ACCOUNT_RULES = {
             "무형자산 및 영업권",
         ],
     },
+
+    "Goodwill": {
+        "account_ids": [
+            "ifrs-full_Goodwill",
+            "ifrs_Goodwill",
+            "dart_Goodwill",
+        ],
+        "account_names": [
+            "영업권",
+            "Goodwill",
+        ],
+    },
+
     "Investment_in_Associates": {
         "account_ids": [
             "ifrs-full_InvestmentsInAssociatesAndJointVentures",
@@ -225,28 +238,89 @@ def fetch_financial_statements(
     corp_code: str,
     year: int,
 ) -> pd.DataFrame:
-    data = request_json(
-        "fnlttSinglAcntAll.json",
-        {
-            "crtfc_key": api_key,
-            "corp_code": corp_code,
-            "bsns_year": str(year),
-            "reprt_code": "11011",
-            "fs_div": "CFS",
-        },
-    )
+    """
+    사업보고서 재무제표를 조회합니다.
 
-    rows = data.get("list", [])
+    1순위: 연결재무제표(CFS)
+    2순위: 별도재무제표(OFS)
 
-    if not rows:
+    CFS가 없는 기업도 분석이 중단되지 않도록
+    OFS를 보조 조회합니다.
+    """
+    api_key = str(api_key or "").strip()
+    corp_code = str(corp_code or "").strip()
+    year = int(year)
+
+    if not re.fullmatch(r"\d{8}", corp_code):
         raise RuntimeError(
-            f"{year}년 연결재무제표 데이터가 없습니다."
+            f"DART 고유번호 형식 오류: {corp_code!r}. "
+            "공백 없이 8자리 숫자를 입력해야 합니다."
         )
 
-    df = pd.DataFrame(rows)
-    df["business_year"] = year
+    print(
+        f"  DART 요청: corp_code={corp_code}, "
+        f"year={year}, report=11011"
+    )
 
-    return df
+    last_error = None
+
+    for fs_div in ("CFS", "OFS"):
+        try:
+            data = request_json(
+                "fnlttSinglAcntAll.json",
+                {
+                    "crtfc_key": api_key,
+                    "corp_code": corp_code,
+                    "bsns_year": str(year),
+                    "reprt_code": "11011",
+                    "fs_div": fs_div,
+                },
+            )
+
+            rows = data.get("list", [])
+
+            if not rows:
+                print(
+                    f"  {year}년 {fs_div} 조회 결과 없음"
+                )
+                continue
+
+            df = pd.DataFrame(rows)
+            df["business_year"] = year
+            df["selected_fs_div"] = fs_div
+
+            if fs_div == "CFS":
+                print(
+                    f"  {year}년 연결재무제표(CFS) 수집 성공"
+                )
+            else:
+                print(
+                    f"  {year}년 별도재무제표(OFS) 수집 성공"
+                )
+
+            return df
+
+        except RuntimeError as exc:
+            last_error = exc
+            message = str(exc)
+
+            if (
+                "status=013" in message
+                or "조회된 데이타가 없습니다" in message
+                or "조회된 데이터가 없습니다" in message
+            ):
+                print(
+                    f"  {year}년 {fs_div} 자료 없음"
+                )
+                continue
+
+            raise
+
+    raise RuntimeError(
+        f"{year}년 사업보고서 재무제표를 "
+        f"CFS와 OFS에서 모두 찾지 못했습니다. "
+        f"마지막 오류: {last_error}"
+    )
 
 def fetch_latest_available_years(
     api_key: str,
@@ -954,27 +1028,73 @@ def main():
                 + rcept_no
             )
 
-        download_xbrl_zip(
-            args.api_key,
-            receipt_no,
-            zip_path,
-        )
+        goodwill_value = None
+        goodwill_source = None
 
-        extract_zip(
-            zip_path,
-            extract_dir,
-        )
+        # 1순위: 사업보고서 XBRL에서 영업권 추출
+        try:
+            download_xbrl_zip(
+                args.api_key,
+                receipt_no,
+                zip_path,
+            )
 
-        goodwill_value = extract_goodwill_value(
-            extract_dir,
-            year,
-        )
+            extract_zip(
+                zip_path,
+                extract_dir,
+            )
+
+            goodwill_value = extract_goodwill_value(
+                extract_dir,
+                year,
+            )
+
+            goodwill_source = "사업보고서 XBRL"
+
+        except Exception as xbrl_error:
+            print(
+                f"  {year}년 XBRL 영업권 추출 실패: "
+                f"{type(xbrl_error).__name__}: "
+                f"{xbrl_error}"
+            )
+
+        # 2순위: 이미 수집한 OpenDART 재무제표에서
+        # 영업권 계정을 다시 검색
+        if goodwill_value is None:
+            goodwill_row = select_account_row(
+                yearly_data[year],
+                "Goodwill",
+            )
+
+            if goodwill_row is not None:
+                goodwill_value = clean_amount(
+                    goodwill_row.get("thstrm_amount")
+                )
+
+                if goodwill_value is not None:
+                    goodwill_source = (
+                        "OpenDART 재무제표 계정"
+                    )
+
+        # 3순위: 별도 영업권 계정이 확인되지 않으면
+        # 분석 중단 대신 0원으로 처리
+        if goodwill_value is None:
+            goodwill_value = 0
+            goodwill_source = (
+                "별도 영업권 계정 미확인"
+            )
+
+            print(
+                f"  주의: {year}년 영업권을 "
+                "XBRL 및 재무제표 계정에서 "
+                "별도로 확인하지 못해 0원으로 처리합니다."
+            )
 
         goodwill_values[year] = goodwill_value
 
         print(
-            f"  Goodwill: "
-            f"{goodwill_value:,}"
+            f"  Goodwill: {goodwill_value:,} "
+            f"({goodwill_source})"
         )
 
     print("\n4. 최종 11개 계정 CSV 생성")
