@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import sys
 import zipfile
+from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -247,6 +248,77 @@ def fetch_financial_statements(
 
     return df
 
+def fetch_latest_available_years(
+    api_key: str,
+    corp_code: str,
+    preferred_years,
+    required_count: int = 3,
+    lookback_limit: int = 10,
+):
+    """
+    사용자가 전달한 연도 중 가장 최근 연도를 시작점으로 삼아,
+    OpenDART에 실제 연결재무제표가 존재하는 최근 사업연도
+    required_count개를 자동으로 수집합니다.
+
+    status=013은 해당 연도의 데이터가 아직 없거나 조회되지 않는
+    정상적인 미조회 상태로 보고 직전 연도로 이동합니다.
+    그 밖의 오류는 그대로 발생시킵니다.
+    """
+    preferred_years = [int(year) for year in preferred_years]
+
+    if preferred_years:
+        start_year = max(preferred_years)
+    else:
+        start_year = datetime.now().year
+
+    yearly_data = {}
+    skipped_years = []
+
+    for year in range(
+        start_year,
+        start_year - lookback_limit,
+        -1,
+    ):
+        print(f"- {year}년 연결재무제표 확인 중")
+
+        try:
+            yearly_data[year] = fetch_financial_statements(
+                api_key,
+                corp_code,
+                year,
+            )
+            print(f"  수집 성공: {year}년")
+
+        except RuntimeError as exc:
+            message = str(exc)
+
+            if "status=013" in message or "데이터가 없습니다" in message:
+                skipped_years.append(year)
+                print(f"  자료 없음: {year}년, 직전 연도로 이동")
+                continue
+
+            raise
+
+        if len(yearly_data) == required_count:
+            break
+
+    if len(yearly_data) < required_count:
+        collected_years = sorted(yearly_data.keys())
+
+        raise RuntimeError(
+            "최근 공시 재무정보 3개년을 확보하지 못했습니다. "
+            f"확보 연도: {collected_years}, "
+            f"조회 제외 연도: {skipped_years}"
+        )
+
+    selected_years = sorted(yearly_data.keys())
+
+    print(
+        "실제 분석 대상 연도: "
+        + ", ".join(str(year) for year in selected_years)
+    )
+
+    return yearly_data, selected_years
 
 def select_account_row(
     df: pd.DataFrame,
@@ -827,18 +899,15 @@ def main():
         / f"{args.company.lower().replace(' ', '_')}_pipeline_outputs"
     )
 
-    yearly_data = {}
+    print("1. OpenDART 최근 공시 연결재무제표 자동수집")
 
-    print("1. OpenDART 연결재무제표 수집")
-
-    for year in args.years:
-        print(f"- {year}년 수집 중")
-
-        yearly_data[year] = fetch_financial_statements(
-            args.api_key,
-            args.corp_code,
-            year,
-        )
+    yearly_data, selected_years = fetch_latest_available_years(
+        api_key=args.api_key,
+        corp_code=args.corp_code,
+        preferred_years=args.years,
+        required_count=3,
+        lookback_limit=10,
+    )
 
     print("\n2. 10개 기본 계정 표준화")
 
@@ -856,7 +925,7 @@ def main():
 
     goodwill_values = {}
 
-    for year in args.years:
+    for year in selected_years:
         print(f"- {year}년 사업보고서 검색")
 
         receipt_no = find_annual_report_receipt(
