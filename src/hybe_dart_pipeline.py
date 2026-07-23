@@ -870,23 +870,22 @@ def build_final_csv(
         raise RuntimeError(
             f"필수 계정 누락: {missing_accounts}"
         )
-
     if missing_value_count:
-    missing_detail = final_df.isna().sum()
-    missing_detail = missing_detail[
-        missing_detail > 0
-    ].to_dict()
+        missing_detail = final_df.isna().sum()
+        missing_detail = missing_detail[
+            missing_detail > 0
+        ].to_dict()
 
-    missing_rows = final_df[
-        final_df.isna().any(axis=1)
-    ].to_dict(orient="records")
+        missing_rows = final_df[
+            final_df.isna().any(axis=1)
+        ].to_dict(orient="records")
 
-    raise RuntimeError(
-        "최종 CSV 결측값이 발견되었습니다.\n"
-        f"결측값 수: {missing_value_count}\n"
-        f"열별 결측값: {missing_detail}\n"
-        f"결측 행: {missing_rows}"
-    )
+        raise RuntimeError(
+            "최종 CSV 결측값이 발견되었습니다.\n"
+            f"결측값 수: {missing_value_count}\n"
+            f"열별 결측값: {missing_detail}\n"
+            f"결측 행: {missing_rows}"
+        )
 
     output_csv.parent.mkdir(
         parents=True,
