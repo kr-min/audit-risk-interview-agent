@@ -1024,7 +1024,7 @@ def build_rich_report_html(
                 <div class="priority-score">
                     우선순위
                     <strong>
-                        {esc(item.get("priority_score", "-"))}
+                        #{index}
                     </strong>
                 </div>
             </div>
